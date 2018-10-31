@@ -23,10 +23,10 @@ import com.apap.tutorial7.rest.Setting;
 @RequestMapping("/model")
 public class ModelController {
 	@Autowired
-    RestTemplate restTemplate;
-
+	RestTemplate restTemplate;
+	
 	@GetMapping()
-    private Object modelCar(@RequestParam("factory") String factory) throws Exception {
+	private Object modelCar(@RequestParam("factory") String factory) throws Exception {
 	HttpHeaders headers = new HttpHeaders();
 	headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 	headers.add("user-agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Mobile Safari/537.36");
@@ -34,5 +34,5 @@ public class ModelController {
 	String path =  Setting.carUrl + "/?cmd=getModels&make=" + factory + "&year=2018";
 	Object response = restTemplate.exchange(path, HttpMethod.GET, entity, Object.class);
 	return response;
-    }
+	}
 }
