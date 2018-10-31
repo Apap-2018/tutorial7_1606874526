@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.apap.tutorial7.model.CarModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * DealerModel
@@ -17,6 +19,7 @@ import com.apap.tutorial7.model.CarModel;
 
 @Entity
 @Table(name = "dealer")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DealerModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +41,7 @@ public class DealerModel implements Serializable {
 	public String noTelp;
 	
 	@OneToMany(mappedBy = "dealer", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JsonIgnore
 	private List<CarModel> listCar;
 
 	public long getId() {
