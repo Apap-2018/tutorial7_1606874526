@@ -23,8 +23,8 @@ import com.apap.tutorial7.rest.Setting;
 @RequestMapping("/model")
 public class ModelController {
 	@Autowired
-    RestTemplate restTemplate;
-
+	RestTemplate restTemplate;
+	
     @GetMapping()
     private Object modelCar(@RequestParam("factory") String factory) throws Exception {
         HttpHeaders headers = new HttpHeaders();
